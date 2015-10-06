@@ -28,7 +28,7 @@ class HolidaysController < ApplicationController
   end
   
   def create
-    @holiday = Holiday.new(params[:holiday])
+    @holiday = Holiday.new(params[:holiday].permit(:typee, :start_date, :due_date, :start_time, :due_time, :mark, :remark, :status))
     @holiday.author = User.current
     @holiday.save
     redirect_to holidays_path()
